@@ -9,13 +9,6 @@
         "module",
         "zf2"
     ],
-    "authors":     [
-        {
-            "name": "Guillermo Pages",
-            "email": "g@gbili.com",
-            "homepage": "http://gbili.com/"
-        },
-    ],
     "minimum-stability": "dev",
     "require": {
         "php":                                ">=5.3.3"
