@@ -20,7 +20,7 @@ return array(
         'scriptalicious'    => __NAMESPACE__ . '\View\Helper\RegisterScript',
         'bulkForm'          => __NAMESPACE__ . '\View\Helper\BulkForm',
         'formElementStaticValueOptions' => __NAMESPACE__ . '\View\Helper\FormElementStaticValueOptions',
-        'wrapInPopup'         => __NAMESPACE__ . '\View\Helper\PopupWrapper',
+        'wrapInPopup'       => __NAMESPACE__ . '\View\Helper\PopupWrapper',
     ),
 
     'factories' => array(
@@ -29,12 +29,6 @@ return array(
             $navHelper = new View\Helper\ConditionalNavigation;
             $navHelper->setServiceLocator($sm);
             return $navHelper;
-        },
-        'colors'        => function ($viewHelperPluginManager) {
-            $sm = $viewHelperPluginManager->getServiceLocator();
-            $helper = new View\Helper\Colors;
-            $helper->setColorFilter(new ColorFilter);
-            return $helper;
         },
     ),
 );

@@ -24,7 +24,7 @@ class Colors extends \Zend\View\Helper\AbstractHelper
         return $this->colorFilter;
     }
 
-    public function setColorFilter(\GbiliViewHelper\ColorFilter $colorFilter)
+    public function setColorFilter(\Gbili\Color\ColorFilter $colorFilter)
     {
         $this->colorFilter = $colorFilter;
         return $this;
