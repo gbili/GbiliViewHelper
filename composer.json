@@ -20,5 +20,10 @@
         "psr-0": {
             "GbiliViewHelper\\": "src/"
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "master"
+        }
     }
 }
