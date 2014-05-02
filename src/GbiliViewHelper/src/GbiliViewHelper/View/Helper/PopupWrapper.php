@@ -27,7 +27,7 @@ class PopupWrapper extends \Zend\View\Helper\AbstractHelper
         $classes   = array_unique($classes);
 
         $html = '<div class="' . (($initialStateHidden)? ' hidden' : '') . '">'
-                  . '<div class="popup-row' . (($initialStateHidden)? ' hidden' : '') . '">'
+                  . '<div class="popup-row">'
                       .'<div class="popup-cell">'
                           .'<div class="' . implode(' ', $classes) . '">'
                              . '<a class="' . $this->hidePopupButtonClass . '">✖</a>'
