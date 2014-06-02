@@ -7,7 +7,4 @@ return array(
         'side_2' => __NAMESPACE__ . '\Service\SideNavigation2Factory',
         'side_3' => __NAMESPACE__ . '\Service\SideNavigation3Factory',
     ),
-    'invokables' => array(
-        'blogUploadFileHydrator' => __NAMESPACE__ . '\Service\UploadFileHydrator',
-    ),
 );
