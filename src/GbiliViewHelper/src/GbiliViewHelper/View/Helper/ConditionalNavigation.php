@@ -13,6 +13,7 @@ namespace GbiliViewHelper\View\Helper;
  */
 class ConditionalNavigation extends \Zend\View\Helper\AbstractHelper
 {
+    protected $checkConditionalNavigation;
     protected $serviceLocator;
 
     protected $containedRouteNames;
@@ -76,6 +77,21 @@ class ConditionalNavigation extends \Zend\View\Helper\AbstractHelper
             $this->navigationConfig = $config['navigation'];
         }
         return $this->navigationConfig;
+    }
+
+    /**
+     * Call this if you want to make sure view helper should be used
+     * Conversely, if you want conditional navigation to be verified,
+     * make sure to set this key in config
+     * @return boolean
+     */
+    public function needsCheck()
+    {
+        if (null === $this->checkConditionalNavigation) {
+            $config = $this->serviceLocator->get('Config');
+            $this->checkConditionalNavigation = isset($config['gbili_conditional_navigation']['activate']) && $config['gbili_conditional_navigation']['activate'];
+        }
+        return $this->checkConditionalNavigation;
     }
 
     protected function getContainedRouteNames($containerName)
