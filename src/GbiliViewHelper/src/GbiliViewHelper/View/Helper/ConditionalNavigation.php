@@ -13,10 +13,18 @@ namespace GbiliViewHelper\View\Helper;
  */
 class ConditionalNavigation extends \Zend\View\Helper\AbstractHelper
 {
-    protected $checkConditionalNavigation;
     protected $serviceLocator;
 
     protected $containedRouteNames;
+    /**
+     * Containers can be passed either as parameter to 
+     * isRouteContainedAndContainerActive($routeName, $containers)
+     * or fetched from config file under 
+     * ['gbili_conditional_navigation']['container_ids'] = array(side_1, side_2 etc.)
+     *
+     * @var array
+     */
+    protected $containersToCheckFromConfig;
     protected $matchedRouteName;
 
     protected $navigationConfig;
@@ -48,9 +56,24 @@ class ConditionalNavigation extends \Zend\View\Helper\AbstractHelper
      * in the sub navigation. And on top of that, we check if any of
      * sub container routes is active
      */
-    public function isRouteContainedAndContainerActive($routeName, $containers)
+    public function isRouteContainedAndContainerActive($routeName, $containers=null)
     {
-        return $this->isRouteContained($routeName, $containers) && $this->isMatchedRouteContained($containers);
+        if (null === $containers) {
+            $containers = $this->getContainersFromConfig();
+        }
+        return (!empty($containers)) && $this->isRouteContained($routeName, $containers) && $this->isMatchedRouteContained($containers);
+    }
+
+    protected function getContainersFromConfig()
+    {
+        if (null === $this->containersToCheckFromConfig) {
+            $config = $this->serviceLocator->get('Config');
+            $this->containersToCheckFromConfig = (isset($config['gbili_conditional_navigation']['container_ids']))
+                ? $config['gbili_conditional_navigation']['container_ids']
+                : array();
+            }
+        }
+        return $this->containersToCheckFromConfig;
     }
 
     public function isMatchedRouteContained($containers)
@@ -77,21 +100,6 @@ class ConditionalNavigation extends \Zend\View\Helper\AbstractHelper
             $this->navigationConfig = $config['navigation'];
         }
         return $this->navigationConfig;
-    }
-
-    /**
-     * Call this if you want to make sure view helper should be used
-     * Conversely, if you want conditional navigation to be verified,
-     * make sure to set this key in config
-     * @return boolean
-     */
-    public function needsCheck()
-    {
-        if (null === $this->checkConditionalNavigation) {
-            $config = $this->serviceLocator->get('Config');
-            $this->checkConditionalNavigation = isset($config['gbili_conditional_navigation']['activate']) && $config['gbili_conditional_navigation']['activate'];
-        }
-        return $this->checkConditionalNavigation;
     }
 
     protected function getContainedRouteNames($containerName)
