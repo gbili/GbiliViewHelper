@@ -3,6 +3,7 @@ namespace GbiliViewHelper;
 return array(
     'invokables' => array(
         'elementsFlatArray' => __NAMESPACE__ . '\View\Helper\FieldsetElementFlattener',
+        'since'             => __NAMESPACE__ . '\View\Helper\Since',
         'renderTree'        => __NAMESPACE__ . '\View\Helper\NestedTreeBuilder',
         'nlToBr'            => __NAMESPACE__ . '\View\Helper\NlToBr',
         'paginator'         => __NAMESPACE__ . '\View\Helper\Paginator',
