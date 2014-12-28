@@ -17,17 +17,13 @@ class Since extends \Zend\View\Helper\AbstractHelper
      * Translate a message
      * @return string
      */
-    public function __invoke($year)
+    public function __invoke($sinceDate)
     {
+        $sinceYear = date('Y', strtotime($sinceDate));
         $thisYear = date('Y');
-        $thisYearInt = strtotime($thisYear);
-        $yearInt = strtotime($year);
-
-        $oneYearInt = strtotime('+1 year');
-
         $since = '';
-        if ($thisYearInt - $oneYearInt < $yearInt) {
-            $since = date('Y', $yearInt) . ' - ';
+        if ($sinceYear !== $thisYear) {
+            $since = $sinceYear . ' - ';
         }
         return $since . $thisYear;
     }
