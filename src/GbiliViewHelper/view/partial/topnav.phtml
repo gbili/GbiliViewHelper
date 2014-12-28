@@ -1,5 +1,5 @@
 <ul class="nav navbar-nav">
-    <?php $checkAcl = (boolean) $this->layout()->isset('aclGuard'); ?>
+    <?php $checkAcl = null !== $this->layout()->aclGuard ?>
     <?php if ($checkAcl) : ?>
         <?php $aclGuard = $this->layout()->aclGuard ?>
         <?php $acl = $aclGuard->getAcl() ?>

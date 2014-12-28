@@ -71,7 +71,6 @@ class ConditionalNavigation extends \Zend\View\Helper\AbstractHelper
             $this->containersToCheckFromConfig = (isset($config['gbili_conditional_navigation']['container_ids']))
                 ? $config['gbili_conditional_navigation']['container_ids']
                 : array();
-            }
         }
         return $this->containersToCheckFromConfig;
     }
