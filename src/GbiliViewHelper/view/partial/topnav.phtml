@@ -48,7 +48,7 @@
                     <?php endif;?>
                     <li>
                         <a href="<?= $child->getHref() ?>">
-                            <?= $this->translate($child->getLabel(), 'dogtore') ?>
+                            <?= $this->translate($child->getLabel()) ?>
                         </a>
                     </li>
                     <?php if (isset($child->divider) && 'below' === $child->divider): ?>
