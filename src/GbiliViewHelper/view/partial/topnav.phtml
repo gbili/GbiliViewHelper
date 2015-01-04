@@ -17,7 +17,7 @@
             <?php $isPageRouteInSideNavRoutes = $this->conditionalNavigation()->isRouteContainedAndContainerActive($page->getRoute()) ?>
             <?php $isActive = ($isPageRouteInSideNavRoutes || $page->isActive()) ?>
                 <li<?= (($isActive)? ' class="active"' : '') ?>>
-                    <a class="nav-header" href="<?= $page->getHref() ?>">
+                    <a class="nav-header" href="<?= $page->getHref() . (($page->hashLink)? '#' . $page->hashLink : '') ?>">
                         <?php if ($page->iconClass) : ?>
                             <span class="<?= $page->iconClass ?>"></span>
                         <?php endif ?>
@@ -47,7 +47,7 @@
                         <li role="presentation" class="dropdown-header"><?= $child->header?></li>
                     <?php endif;?>
                     <li>
-                        <a href="<?= $child->getHref() ?>">
+                        <a href="<?= $child->getHref() . (($child->hashLink)? '#' . $child->hashLink : '') ?>">
                             <?= $this->translate($child->getLabel()) ?>
                         </a>
                     </li>
