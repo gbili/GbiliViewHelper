@@ -69,7 +69,7 @@ class FormElement extends \Zend\I18n\View\Helper\AbstractTranslatorHelper
             throw new \Exception('You cannot set the helper method to "renderElement" which returns this helper causing infinite recursion.');
         }
 
-        return "<div class=\"form-group$statusClass $formGroupClass\">"
+        return "<div class=\"$statusClass $formGroupClass\">"
                     . $this->renderLabel($element)
                     . "<div class=\"controls $controlsDivClass\">"
                         . $this->view->$helperMethod($element)
@@ -107,13 +107,29 @@ class FormElement extends \Zend\I18n\View\Helper\AbstractTranslatorHelper
         }
         $translatedErrors = array();
         foreach ($errors as $error) {
-            $translatedErrors[] = $this->view->translate(current($errors));
+            $translatedErrors[] = $this->translateNonVariableContent(current($errors));
+            break; //Only the first error
         }
 
         $labelFor = $element->getAttribute('name');
         $errorsString = implode(', ' , $translatedErrors);
 
         return "<label class=\"control-label\" for=\"$labelFor\">$errorsString</label>";
+    }
+
+    /**
+     * Email validator, returns a message qutoing the user input.
+     * Because that input is variable, we don't want it to be translated
+     * A user could randomly add content to our
+     */
+    public function translateNonVariableContent($content)
+    {
+        if (preg_match("#^('[^']+') (.+)$#ius", $content, $matches)) {
+            $content = $matches[1] . ' ' . $this->view->translate($matches[2]);
+        } else {
+            $content = $this->view->translate($content);
+        }
+        return $content;
     }
 
     public function renderLabel(\Zend\Form\Element $element)
