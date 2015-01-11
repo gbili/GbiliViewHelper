@@ -53,7 +53,7 @@ class FormElement extends \Zend\I18n\View\Helper\AbstractTranslatorHelper
         $statusClass      = (($hasErrors)? ' has-error' : (($this->firstRendering)? '' : ' has-success'));
         $formGroupClass   = $this->getElementOption($element, 'form_group_class', '');
 
-        $controlsDivClass = $this->getElementOption($element, 'controls_div_class', '');
+        $controlsDivClass = $this->getElementOption($element, 'controls_div_class', 'form-group');
         $elementOptions   = $element->getOptions();
 
         if ($element instanceof \Zend\Form\Element\Select) {
