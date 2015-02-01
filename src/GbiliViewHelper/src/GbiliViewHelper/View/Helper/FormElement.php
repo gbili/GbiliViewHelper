@@ -73,8 +73,8 @@ class FormElement extends \Zend\I18n\View\Helper\AbstractTranslatorHelper
                     . $this->renderLabel($element)
                     . "<div class=\"controls $controlsDivClass\">"
                         . $this->view->$helperMethod($element)
+                        . $errors
                     . '</div>'
-                    . $errors
              . '</div>';
     }
 
