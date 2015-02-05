@@ -21,7 +21,7 @@
                         <?php if ($page->iconClass) : ?>
                             <span class="<?= $page->iconClass ?>"></span>
                         <?php endif ?>
-                        <span class="text"><?= $this->translate($page->getLabel()) ?></span>
+                        <span class="text <?= ($page->classes)? implode(' ', $page->classes) : '' ?>"><?= $this->translate($page->getLabel()) ?></span>
                     </a>
                 </li>
         <?php else: ?>
@@ -30,7 +30,7 @@
                     <?php if ($page->iconClass) : ?>
                         <span class="<?= $page->iconClass ?>"></span>
                     <?php endif ?>
-                    <span class="text"><?= $this->translate($page->getLabel()) ?></span>
+                    <span class="text <?= ($page->classes)? implode(' ', $page->classes) : '' ?>"><?= $this->translate($page->getLabel()) ?></span>
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
