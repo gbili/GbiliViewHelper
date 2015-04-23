@@ -14,16 +14,25 @@ namespace GbiliViewHelper\View\Helper;
 class Since extends \Zend\View\Helper\AbstractHelper
 {
     /**
-     * Translate a message
+     * Returns the $sinceDate year and todays year separated by $separator 
+     * if not the same otherwise it returns todays year
+     * @param string|\DateTime $sinceDate if string assumed to be the year
      * @return string
      */
-    public function __invoke($sinceDate)
+    public function __invoke($sinceDate, $separator = ' - ')
     {
-        $sinceYear = date('Y', strtotime($sinceDate));
-        $thisYear = date('Y');
+        if (is_string($sinceDate)) {
+            $sinceDate = \DateTime::createFromFormat('Y', $sinceDate);
+        }
+        if (!$sinceDate instanceof \DateTime) {
+            throw new \Exception('Param must be instance of DateTime, given: ' . print_r($sinceDate, true));
+        }
+        $sinceYear = $sinceDate->format('Y');
+        $nowDate = new \DateTime();
+        $thisYear = $nowDate->format('Y');
         $since = '';
         if ($sinceYear !== $thisYear) {
-            $since = $sinceYear . ' - ';
+            $since = $sinceYear . $separator;
         }
         return $since . $thisYear;
     }
