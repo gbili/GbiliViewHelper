@@ -25,7 +25,8 @@
                     </a>
                 </li>
         <?php else: ?>
-            <li class="dropdown">
+        <?php $someChildIsActive = array_reduce($page->getPages(), function ($someIsActive, $child) { return ($child->isActive())? true : $someIsActive; }, false); ?>
+            <li class="dropdown <?= $someChildIsActive?' active':''?>">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="<?= $page->getHref() ?>">
                     <?php if ($page->iconClass) : ?>
                         <span class="<?= $page->iconClass ?>"></span>
