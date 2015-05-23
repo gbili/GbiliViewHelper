@@ -18,7 +18,7 @@ return array(
         'renderNavigation'  => __NAMESPACE__ . '\View\Helper\RenderNavigation',
         'simpleMessage'     => __NAMESPACE__ . '\View\Helper\SimpleMessage',
         'string'            => __NAMESPACE__ . '\View\Helper\ExpressivePregTransform',
-        'scriptalicious'    => __NAMESPACE__ . '\View\Helper\RegisterScript',
+        'scriptalicious'    => __NAMESPACE__ . '\View\Helper\Scriptalicious',
         'bulkForm'          => __NAMESPACE__ . '\View\Helper\BulkForm',
         'formElementStaticValueOptions' => __NAMESPACE__ . '\View\Helper\FormElementStaticValueOptions',
         'wrapInPopup'       => __NAMESPACE__ . '\View\Helper\PopupWrapper',

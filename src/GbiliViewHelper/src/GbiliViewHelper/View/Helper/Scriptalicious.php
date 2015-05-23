@@ -11,7 +11,7 @@ namespace GbiliViewHelper\View\Helper;
 /**
  * View helper for translating messages.
  */
-class RegisterScript extends \Zend\View\Helper\AbstractHelper
+class Scriptalicious extends \Zend\View\Helper\AbstractHelper
 {
     protected $scriptalicious;
 
