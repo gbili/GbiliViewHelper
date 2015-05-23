@@ -15,9 +15,9 @@ class Scriptalicious extends \Zend\View\Helper\AbstractHelper
 {
     protected $scriptalicious;
 
-    public function __construct()
+    public function __construct(\Gbili\Stdlib\Scriptalicious $scriptalicious)
     {
-        $this->scriptalicious = new \Gbili\Stdlib\Scriptalicious;
+        $this->scriptalicious = $scriptalicious;
     }
 
     /**
