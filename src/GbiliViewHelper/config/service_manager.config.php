@@ -3,7 +3,7 @@ namespace GbiliViewHelper;
 
 return array(
     'invokables' => [
-        'scriptalicious' => '\Gbili\Stdlib\Scriptalicious',
+        'Scriptalicious' => '\Gbili\Stdlib\Scriptalicious',
     ],
     'factories' => array(
         'side_1' => __NAMESPACE__ . '\Service\SideNavigation1Factory',
