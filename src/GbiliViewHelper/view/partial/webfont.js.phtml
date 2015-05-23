@@ -1,7 +1,7 @@
 <?php ob_start() ?>
 <script type="text/javascript">
 WebFontConfig = {
-google: { families: [ '<?= (isset($this->googleFontFamily)?$this->googleFontFamily:'Pacifico:200,800:latin')?>' ] }
+google: { families: [ '<?= (isset($fontFamily)?$fontFamily:'Pacifico:200,800:latin')?>' ] }
 };
 var cb = function() {
     var wf = document.createElement('script');
